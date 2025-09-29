@@ -1,5 +1,3 @@
-
-https://github.com/user-attachments/assets/95d4e64b-647e-4bfe-b6c3-2df11b52930f
 # Praktikum Pemrograman Mobile
 
 ## Identitas
