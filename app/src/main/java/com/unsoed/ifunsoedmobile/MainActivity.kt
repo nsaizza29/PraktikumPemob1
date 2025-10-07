@@ -16,9 +16,11 @@ class MainActivity : AppCompatActivity() {
 
         initNavigation()
     }
-    private fun initNavigation() {
+
+    private fun initNavigation(){
         binding.btnToPage2.setOnClickListener {
             startActivity(Intent(this, Halaman2Activity::class.java))
         }
     }
+
 }
