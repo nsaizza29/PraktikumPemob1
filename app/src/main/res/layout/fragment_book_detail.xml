@@ -3,19 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="ui.fragment.BookDetailFragment"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@drawable/bg_rounded">
-    
+    android:background="@drawable/bg_rounded"
+    tools:context=".ui.fragment.BookDetailFragment">
+
     <ImageView
         android:id="@+id/imageViewCover"
         android:layout_width="150dp"
         android:layout_height="220dp"
         android:layout_gravity="center"
-        android:scaleType="centerCrop">
-    </ImageView>
-
+        android:scaleType="centerCrop"
+        tools:src="@drawable/book_not_found" />
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
@@ -23,25 +22,21 @@
         android:layout_marginTop="16dp"
         tools:text="Book Title"
         android:textSize="18sp"
-        android:textStyle="bold">
-    </TextView>
-
+        android:textStyle="bold"/>
     <TextView
         android:id="@+id/textViewAuthor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         tools:text="Author"
-        android:textSize="16sp">
-    </TextView>
-
+        android:textSize="16sp"/>
     <TextView
         android:id="@+id/textViewYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         tools:text="1999"
-        android:textSize="14sp">
-    </TextView>
+        android:textSize="14sp"/>
+
 
 </LinearLayout>

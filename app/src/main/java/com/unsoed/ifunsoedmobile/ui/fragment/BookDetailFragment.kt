@@ -5,24 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.bumptech.glide.Glide
+import androidx.fragment.app.Fragment
 import com.unsoed.ifunsoedmobile.R
 import com.unsoed.ifunsoedmobile.databinding.FragmentBookDetailBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.bumptech.glide.Glide
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
+/**
+ * A simple [Fragment] subclass.
+ * Use the [BookDetailFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 class BookDetailFragment (
     private val title: String,
     private val author: String,
     private val year: String,
     private val coverId: Int): BottomSheetDialogFragment() {
+    // TODO: Rename and change types of parameters
     private var _binding: FragmentBookDetailBinding? = null
     private val binding get() = _binding!!
-
-    override fun getTheme(): Int = R.style.ThemeOverlay_App_BottomSheetDialog
+    override fun getTheme():Int = R.style.ThemeOverlay_App_BottomSheetDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,33 +37,29 @@ class BookDetailFragment (
         _binding = FragmentBookDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onDestroyView(){
         super.onDestroyView()
         _binding = null
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        loadData()
-    }
-
     private fun loadData(){
-
-        Toast.makeText(context, "$coverId", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,"$coverId", Toast.LENGTH_SHORT).show()
         binding.textViewTitle.text = title
         binding.textViewAuthor.text = author
         binding.textViewYear.text = year
 
-        if (coverId != 0) {
+        if(coverId != 0){
             val url = "https://covers.openlibrary.org/b/id/$coverId-M.jpg"
             Glide.with(this)
                 .load(url)
                 .into(binding.imageViewCover)
-        } else {
+        }else{
             binding.imageViewCover.setImageResource(
                 R.drawable.book_not_found
             )
         }
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        loadData()
     }
 }

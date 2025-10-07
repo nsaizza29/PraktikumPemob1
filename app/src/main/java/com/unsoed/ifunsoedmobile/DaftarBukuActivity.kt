@@ -8,20 +8,21 @@ import com.unsoed.ifunsoedmobile.data.model.BookDoc
 import com.unsoed.ifunsoedmobile.databinding.ActivityDaftarBukuBinding
 import com.unsoed.ifunsoedmobile.ui.adapter.BookAdapter
 import com.unsoed.ifunsoedmobile.viewmodel.MainViewModel
+import com.unsoed.ifunsoedmobile.ui.adapter.OnBookClickListener
 import com.unsoed.ifunsoedmobile.ui.fragment.BookDetailFragment
 
-class DaftarBukuActivity : AppCompatActivity(), BookAdapter.OnBookClickListener {
+class DaftarBukuActivity : AppCompatActivity(), OnBookClickListener {
 
     private lateinit var binding: ActivityDaftarBukuBinding
-
     private val viewModel: MainViewModel by viewModels()
-
-    private val adapter = BookAdapter(emptyList(),this)
+    private lateinit var adapter: BookAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDaftarBukuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        adapter = BookAdapter(emptyList(), this)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
@@ -34,13 +35,14 @@ class DaftarBukuActivity : AppCompatActivity(), BookAdapter.OnBookClickListener 
     }
 
     override fun onBookClick(book: BookDoc) {
-        book.let { b->
+        book.let {b->
             BookDetailFragment(
-                title = b.title ?: "-",
-                author = b.authorName?.joinToString(", ") ?: "Unknown Author",
-                year = "${b.firstPublishYear}",
-                coverId = b.coverId ?: 0
+                b.title ?: "-",
+                b.authorName?.joinToString(", ") ?: "Unknown Author",
+                "${b.firstPublishYear}",
+                b.coverId ?: 0
             ).show(supportFragmentManager, BookDetailFragment::class.java.simpleName)
+
         }
     }
 }
